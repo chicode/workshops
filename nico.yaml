@@ -178,7 +178,7 @@ lessons:
       What this really means is that you tried to use a variable that hasn't been created yet. Why's that--didn't we create it at the start of the program? Well, we created the variables at the start of the program--outside of the `update` section. So, when Nico sees
       ```python
       def update():
-	      x = x + 1
+        x = x + 1
       ```
 
       Nico sees `x = x + 1` and tries to figure out whether you're *creating* or *updating* a variable called `x`.   Nico looks inside the `update` section and doesn't find anything, since our first `x` was created outside the `update` section. So, Nico ignores it, and assumes that now you're creating a new variable.
@@ -203,7 +203,7 @@ lessons:
       it looks for `x` outside of the `update` section. We can do that by **marking `x` as being `global`**.
       ```python
       def update():
-	      global x
+        global x
       x = x + 1
       ```
       Notice how that reminder goes in the beginning of the section, before any variables are introduced.
@@ -297,7 +297,7 @@ lessons:
       global y
 
       if is_w_down:
-	      y = y - 1
+        y = y - 1
       ```
 
     - |
@@ -453,9 +453,9 @@ directions:
       As an example, in the `if` statement
       ```python
       if dogs > 34:
-	      print('Woof!')
+        print('Woof!')
       else:
-	      print('Not enough dogs!')
+        print('Not enough dogs!')
       ```
       If we have more than 34 dogs, then Nico will print Woof! Otherwise, Nico will tell us "Not enough dogs!"
 
