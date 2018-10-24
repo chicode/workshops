@@ -437,7 +437,7 @@ lessons:
     name: Flower Counters, Leveled Up
     description: |
       Let's reward the player for collecting every flower by displaying a little "Congratulations!" message.
-directions:
+    directions:
     - |
       Count how many flowers are in your game. Create a new variable, called `total_flowers`, that stores this number.
 
