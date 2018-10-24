@@ -56,7 +56,7 @@ lessons:
       Change the `2` and `3` to different numbers to figure out how the numbers affect where the sprite is drawn.
 
     - |
-    You can think of `2, 3` as a coordinate pair (2, 3) like in math class. Notice that the Y axis is flipped from what you are used to, and that the point (0, 0) is in the top left corner instead of the bottom left. This means that y-coordinate gets bigger when you move down, not up.
+      You can think of `2, 3` as a coordinate pair (2, 3) like in math class. Notice that the Y axis is flipped from what you are used to, and that the point (0, 0) is in the top left corner instead of the bottom left. This means that y-coordinate gets bigger when you move down, not up.
 
   -
     name: More Sprites
@@ -131,7 +131,7 @@ lessons:
       Make use of your new variables by changing the code.
 
   -
-    name: Updating Variables 1: Not the Sequel
+    name: "Updating Variables 1: Not the Sequel"
     description: |
       Variables become really useful when you have a value that needs to change, like our coordinates. Since our code now uses boxes instead of hard-coded values, we can actually change their contents, moving the player.
 
@@ -152,7 +152,7 @@ lessons:
       You've seen how to set a variable's value, but how do you change it? Talk to the person next to you about how you could add `1` to a variable (Hint: use `+`).
 
   -
-    name: Updating Variables 2: The Sequel
+    name: "Updating Variables 2: The Sequel"
     description: |
       Recall that the *game loop* had two phases: the first phase changes the state of the game, and the second phase draws. We've seen how to use the draw phase; now, we want to change the state of the game by updating variables.
 
