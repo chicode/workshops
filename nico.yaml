@@ -15,7 +15,10 @@ lessons:
     - |
       Take a look around!
 
-    - | Try to figure out how to draw a sprite in the first square.  -
+    - |
+      Try to figure out how to draw a sprite in the first square.
+
+  -
     name: Your First Code
     description: |
       Now that you've drawn the sprite, let's put in it on the screen!
