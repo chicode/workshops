@@ -1,0 +1,560 @@
+name: Nico-8 with Python
+description: |
+  Learn to make cool games in Nico-8!
+lessons:
+-
+  name: Putting a Sprite on the Screen
+  description: In this lesson you'll learn how to use Nico and create your first sprite
+  slides:
+  -
+    name: Your First Sprite
+    description: |
+      Welcome to codingworkshops! Before we dive into coding, you should just take a moment to get used to the interface.
+
+    directions:
+    - |
+      Take a look around!
+
+    - | Try to figure out how to draw a sprite in the first square.  -
+    name: Your First Code
+    description: |
+      Now that you've drawn the sprite, let's put in it on the screen!
+
+      Enter the following code in the editor:
+      ```python
+      def draw():
+          sprite(0, 2, 3)
+      ```
+
+    directions:
+    - |
+      Make one more sprite, and draw it in a different place.
+
+    - |
+      What could that code mean? Think about that with your partner.
+
+  -
+    name: Talking to Nico
+    description: |
+      In order to do anything with Nico, we need to give it instructions on what we want it to do. These instructions are called *code*.
+
+      If we want to draw something, (with `sprite`), Nico needs to know to things:
+
+      which sprite to draw, the first `0`
+      where to draw it, the position `2, 3`
+
+      If you forgot your sprite's number, click on the sprite tab so that you can see it again.
+
+    directions:
+    - |
+      Why do we specify the position using two numbers? What could they mean?
+
+    - |
+      Change the `2` and `3` to different numbers to figure out how the numbers affect where the sprite is drawn.
+
+    - |
+    You can think of `2, 3` as a coordinate pair (2, 3) like in math class. Notice that the Y axis is flipped from what you are used to, and that the point (0, 0) is in the top left corner instead of the bottom left. This means that y-coordinate gets bigger when you move down, not up.
+
+  -
+    name: More Sprites
+    description: |
+      Now that we understand one part of the code, let's try breaking down the other part:
+      ```python
+      def draw():
+      ```
+      This line starts the `draw` section of our program. In this section, we tell Nico all the drawing we need to do, **so you only need one.**
+
+    directions:
+    - |
+      Make one more sprite and draw it in the center of the screen.
+
+  -
+    name: Moving Your Sprites
+    description: |
+      Let's start getting your sprite to move!
+
+      Whenever you encounter a coding problem, it's always good to first think about it from a high level. In this case, what 'moving' really means is that we just need to gradually change the sprite's position.
+
+    directions:
+    - |
+      Erase your current code and tell Nico to draw your sprite at `0, 0`, then at `1, 0`, and then at `2, 0`.
+
+    - |
+      Do you notice anything strange happening? Why might this be occurring?
+
+  -
+    name: Uh Oh
+    description: |
+      Huh. That didn't work - Nico just drew three overlapping sprites that are all stuck there!
+
+      To make sense of this, you need to understand how Nico actually works. 60 times every second, Nico does two things: It changes the state of the game (for example, by moving something), clears the screen, and draws the new positions — this is called the **game loop**.
+
+      If you want to create motion, you need to change the position of a sprite between frames — not just draw the sprite three times each frame!
+
+    directions:
+    - |
+      Turn to your partner and explain why the last slide's approach to movement failed.
+
+    - |
+      How might we actually move the sprite? (Hint: Think about the game loop!)
+
+    - |
+      One idea for moving the sprite is to use the part of the game loop that changes the state of the game — in particular, if we could change the position of the player, that would be helpful. What do you think of this approach?
+
+  -
+    name: Variables
+    description: |
+      How do we actually change the state of the game?
+
+      If you look back at the sprite instruction, you'll see a bunch of constants, or values that stay the same. What we really need is a way to change those values.
+
+      This is where the variable comes in. You can think of it as an empty box with a label that can store a value, like a number.
+
+      Let's make an example. Put the following at the start of your program (before draw):
+      `x = 0`
+
+      In this case, `x` is the box, and `0` is the value that goes inside of it. The `=` is a way to put the `0` into the box.
+
+      When Nico sees a variable in a place where it expects a value, it takes the contents of the box out and uses that instead. That's how you use variables in your code.
+
+    directions:
+    - |
+      Create a second variable that stores the `y` coordinate of the object and use that as well.
+
+    - |
+      Remove the extra `sprite` statements from your code.
+
+    - |
+      Make use of your new variables by changing the code.
+
+  -
+    name: Updating Variables 1: Not the Sequel
+    description: |
+      Variables become really useful when you have a value that needs to change, like our coordinates. Since our code now uses boxes instead of hard-coded values, we can actually change their contents, moving the player.
+
+      If we have a variable (**don't actually add this to your code!**):
+
+      ```python
+      my_variable = 5
+      ```
+
+      We can update it like so:
+
+      ```python
+      my_variable = 6
+      ```
+
+    directions:
+    - |
+      You've seen how to set a variable's value, but how do you change it? Talk to the person next to you about how you could add `1` to a variable (Hint: use `+`).
+
+  -
+    name: Updating Variables 2: The Sequel
+    description: |
+      Recall that the *game loop* had two phases: the first phase changes the state of the game, and the second phase draws. We've seen how to use the draw phase; now, we want to change the state of the game by updating variables.
+
+      Similarly to the drawing phase, to start the update phase we use
+      ```python
+      def update():
+      ```
+
+      Remember that this is **not part of the `draw` section, and so it should not be indented!** Everything indented and below `def draw():` is interpreted as part of the draw section, but now we want to start a new section.
+
+    directions:
+    - |
+      Now try increasing the value of `x` by 1 inside of the `update` section. Just like adding instructions to the draw section, you need to **indent your code** so Nico knows it's inside the `update` section.
+
+    - |
+      You've just encountered your first error! Don't panic and **try to figure out what it means**. Remember that errors shouldn't be scary, and are really just a way for your friendly computer to tell you what went wrong.
+
+  -
+    name: Variable Scope
+    description: |
+      You should have gotten this error:
+      ```
+      local variable 'x' referenced before assignment
+      ```
+
+      What this really means is that you tried to use a variable that hasn't been created yet. Why's that--didn't we create it at the start of the program? Well, we created the variables at the start of the program--outside of the `update` section. So, when Nico sees
+      ```python
+      def update():
+	      x = x + 1
+      ```
+
+      Nico sees `x = x + 1` and tries to figure out whether you're *creating* or *updating* a variable called `x`.   Nico looks inside the `update` section and doesn't find anything, since our first `x` was created outside the `update` section. So, Nico ignores it, and assumes that now you're creating a new variable.
+
+      And so when it goes to the right side, and reads `x+1`, it freaks out: It thinks `x` is a new variable that lives inside the `update` section and is in the process of being created, and so when it sees you reference `x` in `x+1`, that `x` doesn't exist yet!
+
+    directions:
+    - |
+      Talk to your partner about why this error happened to make sure you both understand it. If you are confused, that's ok— this is probably the most difficult concept in our lesson.
+
+    - |
+      Try to think about why Nico doesn't freak out when we use `x` and `y` in the `draw` section.
+
+  -
+    name: global, our savior
+    description: |
+      To help Nico understand what we're trying to do, we need to make sure that when it sees
+      ```python
+      def update():
+      x = x + 1
+      ```
+      it looks for `x` outside of the `update` section. We can do that by **marking `x` as being `global`**.
+      ```python
+      def update():
+	      global x
+      x = x + 1
+      ```
+      Notice how that reminder goes in the beginning of the section, before any variables are introduced.
+
+    directions:
+    - |
+      Fix your code with `global`
+
+    - |
+      Run your code and see your sprite move!
+
+    - |
+      Adjust the speed of your sprite so they go at a pace you find acceptable.
+
+    - |
+      Your sprite is only moving right at the moment — can you figure out how to make them move diagonally?
+
+  -
+    name: You're Done!
+    description: |
+      Congratulations, you've finished this lesson! Feel free to go back to re-read some parts and move on to the second lesson when you're ready.
+
+-
+  name: Player Input
+  description: How can we give the player control?
+  lessons:
+  -
+    name: Recap
+    description: |
+      Welcome to lesson 2! Let's start out by practicing what you learned last lesson, so delete any code that you have. You'll need to know these core concepts:
+
+      * how to use Nico
+      * game loop / code sections
+      * instructions
+      * variables
+    directions:
+    - |
+      Write a program with a sprite that starts in the middle of the screen and moves left (you might need a little trial-and-error to get this right!).
+
+  -
+    name: Introduction
+    description: |
+      Our game is pretty cool, but it can only really be a game until we actually respond to some kind of input from the player.
+
+    directions:
+    - |
+      At the moment, our code changes `x` and `y` automatically — the player can't influence it. As always, when dealing with a challenge, it's best to think about the solution abstractly and then get more specific:
+
+      1. we want a way to move our sprite based on player input
+      2. we want to **only change the sprite's position** based on player input
+      3. we need to change the sprite's position only **when the player presses a key**
+
+      But before we write that code, we need a way to ask Nico if the player is pressing a key.
+
+  -
+    name: Asking Nico Questions
+    description: |
+      Asking a question in nico is really just another type of instruction — one that Nico actually answers, unlike something like `sprite`.
+
+      To show this, let's ask Nico if a player is pressing W.
+
+      ```python
+      is_w_down = key_down('w')
+      ```
+      In this case, `key_down` will turn into Nico's answer — either `true` (yes) or `false` (no) — and that answer will be stored in the variable `is_w_down`.
+
+    directions:
+    - |
+      How would Nico answer `key_down('w')` if the player is pressing W? How would Nico answer if the player is *not* pressing W? (Remember, Nico **doesn't know** the words "yes" or "no"!)
+
+    - |
+      Talk to your partner about where in your code you'd want to ask these questions (think back to the game loop!).
+
+    - |
+      Ask Nico if the player wants to move the sprite down (pressing S) and store that in a variable.
+
+  -
+    name: Using Nico's Answers
+    description: |
+      Unfortunately, our code is useless until we can actually do something with Nico's answers. To do this, we can use **if statements**.
+
+      What's an `if` statement? Let's find out!
+
+    directions:
+    - |
+      Delete the current automatic movement code in your `update` section. **Don't delete** the code asking Nico if a key is being pressed, though!
+    - |
+      Add this code to your `update` section. Remember to indent!
+
+      ```python
+      global y
+
+      if is_w_down:
+	      y = y - 1
+      ```
+
+    - |
+      Discuss with your partner about why we need to use `global y` in our code.
+
+    - |
+      Still with your partner, make a guess about how `if` statements might work, and why the code under them is indented.
+
+    - |
+      See if you can figure out how to let the player move left.
+
+    - |
+      Once the player is able to move left, try to let them move in all four directions.
+
+    - |
+      As you may have noticed, the `if` statement is a way to run some instructions **only if** a variable is `true`. Now, try to get rid of the variables entirely, by asking Nico the question more directly.
+
+  -
+    name: Controlling the Player
+    description: |
+      The player has control now. But they have too much control! They can walk off screen!
+
+      As always, let's start out by thinking about this problem abstractly:
+
+      1. we want to prevent the player from going offscreen
+      2. we want to **bring the player back** when they go offscreen
+      3. we want to bring the player back when ?
+
+    directions:
+    - |
+      We can ask Nico questions about numbers. With your partner, figure out what the values of `result_1`, `result_2`, and `result_3` be in the below sample.
+
+      ```python
+      x = 51
+      result_1 = x < 5
+      result_2 = x >= 51
+      result_3 = (x - 1) == 50
+      ```
+
+    - |
+      With your partner, figure out how to test if the player has gone offscreen *to the left.* (Hint: you'll need to use an `if` statement and a number question!)
+
+    - |
+      Make sure that the player can't exit the screen to the right.
+
+    - |
+      Prevent the player from moving off at the top or bottom of the screen. Now, they can't escape, mwahaha!
+
+-
+  name: The Map
+  description: The empty white background is boring... let's build a world to explore!
+  slides:
+  -
+    name: Using the Tile View
+    description: |
+      We've seen the game, editor, and sprite views. Now, let's check out tile!
+
+    directions:
+    - |
+      Draw some terrain sprites from an **overhead view** (think of how a desert or grassland would look from above).
+
+    - |
+      Head to the tile view. Use the sprite selector at the very bottom to choose a terrain and start drawing a map!
+
+    - |
+      Draw a flower and add it to your new world 🌺 (It doesn't have to be a flower, but we'll be calling it a flower throughout the rest of this lesson, so just keep that in mind.)
+
+
+  -
+    name: Drawing the World
+    description: |
+      Now that you've drawn a world, let's get it on screen!
+
+    directions:
+    - |
+      The `tilemap` instruction is used to draw the world onto the screen. With your partner, figure out how to use this instruction to draw your game's world. Make sure you can still see the player!
+
+    - |
+      You may have noticed that the order of the draw instructions matters (if you haven't, try changing it around!). Talk to your partner about why this could be happening.
+
+    name: Flowers
+    description: |
+      You've drawn a flower and added it to your world. Now, let's let the player collect them!
+
+      Again, we should approach this from a high level.
+      1. We want the player to collect flowers.
+      2. We need to detect when the player is touching a flower.
+      3. We need to detect when the player is touching a flower,  *and then* give them that flower.
+      4. We need to detect when the player is touching a flower, and then give them that flower, *and finally* remove the flower from the world.
+
+    directions:
+    - |
+      Add some flowers to your world if you haven't already.
+
+    - |
+      Our first objective is figuring out if a player is touching a flower. To do this, we'll need a new type of question: We need to ask Nico if something is a flower. To do that, we need to use sprite numbers.
+
+      ```python
+      get_tile(x, y)
+      ```
+      As with `key_down`, this instruction causes Nico to give something to us — in this case, that something is the sprite number of the tile at position `x, y`. For example, if I have a flower tile at `3, 4` and that flower tile is actually sprite `5`, then if I ask Nico `get_tile(3, 4)`, Nico will answer `5`.
+
+      Talk to your partner about how you could use this to figure out whether or not a player is touching a flower.
+
+    - |
+      Once you know a player is on a flower tile, we need to do something with that information. Create a variable called `flowers_collected` and increase it by `1` whenever a player is on a flower.
+
+    - |
+      We have `flowers_collected`, but the player has no way of seeing it's value!
+      To do this, let's use the `print` instruction. The `print` instruction just writes something onto the screen for us. The instruction `print(17)` will print the number `17`, for example.
+
+      With your partner, discuss how to use `print` to display the total flowers collected.
+      Do you notice anything wacky happening with the counter?
+
+
+
+  -
+    name: Flower Counters, Fixed
+    description: |
+      At the moment, our flower counter just keeps going up and up! We need to remove these flowers from the world so a player can't just keep collecting the same flower over and over again.
+
+      To do this, we can use the `change_tile` instruction.
+
+    directions:
+    - |
+      This is a good place to introduce the magical ✨ Nico Booklet ✨. The Nico Booklet knows everything about every instruction Nico has, so you don't have to!
+
+      To figure out how to use the `change_tile` instruction, open the Nico Booklet by pressing the little book icon at the right side of the editor. Then, click on the "Tilemap" section, and look for the `change_tile` instruction.
+
+    - |
+      Use `change_tile` to remove a flower once the player has collected it.
+
+  -
+    name: Flower Counters, Leveled Up
+    description: |
+      Let's reward the player for collecting every flower by displaying a little "Congratulations!" message.
+directions:
+    - |
+      Count how many flowers are in your game. Create a new variable, called `total_flowers`, that stores this number.
+
+      But wait! That variable wouldn't change — why can't we just write the number in our program?
+
+      Well, imagine a week later you're looking at your code and you see some random number in your program. "What in the heck does that mean?", your future self thinks. This way, if they see the variable `total_flowers` they'll know immediately what it means.
+
+      Also, imagine you use the `total_flowers` number multiple times in your program. If you ever increase the total number of flowers, you'll have to change this number in a bunch of different spots! And what happens if you forget to change one of those spots?
+
+    - |
+      Once a player has collected all the flowers, talk with with your partner about how to show a special "Congratulations!" message.
+
+      To display a message like "Congratulations!", we need to use **strings**. A **string** is just some text, and you can create one by surround your text in little quotes--so, you'd use `print('Congratulations!')`.
+
+      Another tip: With `if` statements, you can use `else`. An `else` part of an `if` statement contains code that runs whenever the `if` statement *doesn't* run.
+      As an example, in the `if` statement
+      ```python
+      if dogs > 34:
+	      print('Woof!')
+      else:
+	      print('Not enough dogs!')
+      ```
+      If we have more than 34 dogs, then Nico will print Woof! Otherwise, Nico will tell us "Not enough dogs!"
+
+    - |
+      Remember the `key_down` instruction? Recall that we used it with quotes.
+      ```python
+      key_down('w')
+      ```
+      Why did we use quotes around the w?
+
+    - |
+      Let's make our flower counter a little prettier. While we know what the little number in the top left corner of our screen means, a random person playing your game might not! So, let's change the flower counter from just being a number to saying "You have _ flowers!"
+
+      To do this, we'll need to combine strings. To combine strings, we just use the + operator. So, "You" + " have" would be "You have".
+
+      Try combining 'You have', flowers_collected, and 'flowers!' into one big string and printing it!
+      Does Nico have any errors?
+
+    - |
+      If you try using
+      ```python
+      print('You have' + flowers_collected + 'flowers!')
+      ```
+      you may notice a problem--Nico gives an error! Let's look at that error.
+      ```python
+      TypeError: cannot concatenate 'str' and 'int' objects
+      ```
+      In this error, "concatenate" is just a fancy word for "string addition," 'str' is short for string, and 'int' is short for integer (number). What Nico is telling us is that it doesn't know how to add a string and a number--they are different kinds, or types, of values (hence the name `TypeError`).
+
+      To solve this, use the `str` instruction to convert `flowers_collected` into a string. For example, `str(flowers_collected)` would create a string whose content is the number inside `flowers_collected`--so if `flowers_collected` contained the number `17`, then `str(flowers_collected)` would be the string `'17'`.
+
+      6
+      You might notice that the spacing around the number is a bit awkward. This is because we have no spaces! `'Hello' + 'Dog'` is `'HelloDog'`, not `'Hello Dog'`. To fix this, add some spaces to the two strings around `flowers_collected`. Where should the spaces go?
+
+  -
+    name: Biodiversity University
+    description: |
+      Let's add some diversity to our vegetation!
+
+    directions:
+    - |
+      Draw some new kinds of plants and add them to your world.
+
+    - |
+      Currently, to check if the player is on a flower, we check if the tile their on is the flower tile. But if we add more flower tiles, then we'll need to have a whole bunch of `if` statements in our code, and we'll need to change the code whenever we add more!
+
+      This is where flags come in. A flag is like a switch that you can turn on to indicate something about a sprite. Keep in mind that flags are set on the sprite level, not the tile level — this means that if you turn on a flag for your flower sprite, all of your flower tiles will have that flag!
+
+      Mark flag `0` for all of your plant sprites to tell Nico that they can be picked up by the player.
+
+    - |
+      Use the `has_flag` instruction to help the player pick up all of your plants! (Remember to use the ✨ Nico Booklet ✨ if you need help.)
+
+  -
+    name: The Return of Flower Medusa
+    description: |
+      Flower Medusa is attacking! To save yourself, you convince her that turning *every plant in the world* into stone is way more fun than dealing with a puny human.
+
+    directions:
+    - |
+      Edit your plants to look like stones.
+
+    - |
+      Oh no! This means that the player can no longer walk freely around the map. Your challenge is to figure out how to prevent the player from walking into the stone plants.
+
+      As we've been doing, you should first think about this issue from a high level, and then worry about the actual code.
+
+-
+  name: Reign of the Chicken
+  description: Our player is lonely... let's give \'em a pet chicken!
+  slides:
+  -
+    name: Chicken
+    description: |
+      Let's add a chicken to accompany the player!
+
+      Instead of the player controlling the chicken, the chicken will be controlled by Nico. Let's figure out how to do that!
+
+    directions:
+    - |
+      Draw a chicken (or dog, or rock, or anything else!) sprite!
+
+    - |
+      Make the chicken move in some direction (think back to the first lesson).
+
+    - |
+      Right now, our chicken can escape from the screen. Make sure that this doesn't happen by moving it in the opposite direction when it hits an edge.
+
+    - |
+      Make your chicken move diagonally!
+
+  -
+    name: Non-Robotic Chickens
+    description: |
+      Right now our chicken's movement is very predictable - let's change that by adding some randomness! Thankfully, someone out there has figured out how to generate randomness, so you don't have to implement that yourself. They placed that code in what's called a _package_, which is just a collection of instructions that aren't included by default.
+
+      ```python
+      import random
+      ```
+
+      This instruction (usually placed at the top of a program) tells Nico to `import`, or use, this package.
+
