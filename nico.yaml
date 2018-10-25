@@ -525,7 +525,8 @@ lessons:
 
 -
   name: Reign of the Chicken
-  description: Our player is lonely... let's give \'em a pet chicken!
+  description: |
+    Our player is lonely... let's give 'em a pet chicken!
   slides:
   -
     name: Chicken
