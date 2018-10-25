@@ -232,7 +232,7 @@ lessons:
 -
   name: Player Input
   description: How can we give the player control?
-  lessons:
+  slides:
   -
     name: Recap
     description: |
