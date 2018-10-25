@@ -1,0 +1,43 @@
+[[package]]
+category = "main"
+description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
+name = "ruamel-yaml"
+optional = false
+python-versions = "*"
+version = "0.15.74"
+
+[package.dependencies]
+[package.dependencies."ruamel.ordereddict"]
+python = "<=2.7"
+version = "*"
+
+[[package]]
+category = "main"
+description = "a version of dict that keeps keys in insertion resp. sorted order"
+marker = "platform_python_implementation == \"CPython\" and python_version <= \"2.7\""
+name = "ruamel.ordereddict"
+optional = false
+python-versions = "*"
+version = "0.4.13"
+
+[[package]]
+category = "main"
+description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
+name = "ruamel.yaml"
+optional = false
+python-versions = "*"
+version = "0.15.74"
+
+[package.dependencies]
+[package.dependencies."ruamel.ordereddict"]
+python = "<=2.7"
+version = "*"
+
+[metadata]
+content-hash = "d330ba209b0cb76d09ea952b5c23cf40d674f96569d6751356e8d4964b84eb73"
+python-versions = "*"
+
+[metadata.hashes]
+ruamel-yaml = ["1c356bb5170bde7c68c821fcc88454b4ba75bd4b4297be36323541df5f6f8b06", "33af81c7788d211c126d4260b68dac275fb2951a680cb7275712287115618038", "34be9e17c88a75745b69d5e7bcf032489dff1a2c5115b15e87627bc198f9399e", "38cef57bb452910c2934670c654cf3940fc49d29106b9863ff23ab85cc30090d", "45c74fcf568ddd86406cf19fbc67b7ef0bbba518bbb234cb4a2c4336fcf48f1b", "4bbd2a687f5985b29705a86ace42aa93ad51af8fb36b6e7966a8e59f4c26ca2e", "5a7a0495bda49e7ef16bb5729fbb493f1fcc9e2a09c0d07dc14fb35505bf43bd", "603a460b93c58f1f227eb642704813579f4078f6a34cbf6314e6ff57f67a3dea", "64060398e222ca0d9243e6399f1d485bbcda2138b1e91cb642aaa721f7709388", "74eeb80b34f6e4d5f7309486f61392dbc651f775fd48555a236dafeb8b5e1b88", "7bcea1eccd35c529261d1a977e6866899227056314f3307e5de4e95fa0cc813f", "8e3a6c731d7d3f7f5772a3d2a4d7900ad569024d13526229a4342e11c18b4990", "8e6731c5c5b202c15bc6177197fd11d3dda71f3561a7646e350eef01a621907a", "8fce426d9dbf31a663ec50e7fe0d5381b68d2d61dbba6189cd0117b45e02119d", "930b733932edf78c578a7dae4b1549958bdb8a8d7a5eee1b4956aefc487ff6fd", "a37f66cf8f52facf4f048d927778ea03f524ebdb512c0f4a8f3defff4c12dbbb", "be7b840ebd8e04c5823d7d05d9b069a0010feb46622ae0c89d8a988800a1fa49", "cb81dd4ffb7a407b65d62e3c0082e839197e2f605395e2fd90d1be1f19abe7d0", "d679ea9c2c31b16acde4fa7dfe7b9c5664fd8bd909ece72fb31d740c153e4100", "d70b2a26cae58ee1179dcbe1fc39c4d3a0b672fc1a11a7f6c64806653b333212", "e33ac3a95aac3a338f2f6b17ea9e2540bb21b74394ca50fd51136498077cdaf8", "f08333ad3186198aaf527e6e565a83cf641a3ebc28a10094e31f52a14ce94391"]
+"ruamel.ordereddict" = ["08b4b19fe518d32251a5338e039c4dc9eb0876f2919f94c9b8d2f9446ea80806", "150ce8e6c514a2a2b62753622a75874962561f8e5eeec81a3172ab952807bf0b", "45541836cbfdde630033cae7bbbe35acbac87a0ceec79f944b7a3bedd940fe78", "854dd4a524811b16111b1107d8a751e4ca064d2bb103d3d91deab75de36b6620", "aee2fa23e884249b4284b728888c553d551e5bfd4de2731f10153fd7813ec55f", "bf0a198c8ce5d973c24e5dba12d3abc254996788ca6ad8448eabc6aa710db149"]
+"ruamel.yaml" = ["1c356bb5170bde7c68c821fcc88454b4ba75bd4b4297be36323541df5f6f8b06", "33af81c7788d211c126d4260b68dac275fb2951a680cb7275712287115618038", "34be9e17c88a75745b69d5e7bcf032489dff1a2c5115b15e87627bc198f9399e", "38cef57bb452910c2934670c654cf3940fc49d29106b9863ff23ab85cc30090d", "45c74fcf568ddd86406cf19fbc67b7ef0bbba518bbb234cb4a2c4336fcf48f1b", "4bbd2a687f5985b29705a86ace42aa93ad51af8fb36b6e7966a8e59f4c26ca2e", "5a7a0495bda49e7ef16bb5729fbb493f1fcc9e2a09c0d07dc14fb35505bf43bd", "603a460b93c58f1f227eb642704813579f4078f6a34cbf6314e6ff57f67a3dea", "64060398e222ca0d9243e6399f1d485bbcda2138b1e91cb642aaa721f7709388", "74eeb80b34f6e4d5f7309486f61392dbc651f775fd48555a236dafeb8b5e1b88", "7bcea1eccd35c529261d1a977e6866899227056314f3307e5de4e95fa0cc813f", "8e3a6c731d7d3f7f5772a3d2a4d7900ad569024d13526229a4342e11c18b4990", "8e6731c5c5b202c15bc6177197fd11d3dda71f3561a7646e350eef01a621907a", "8fce426d9dbf31a663ec50e7fe0d5381b68d2d61dbba6189cd0117b45e02119d", "930b733932edf78c578a7dae4b1549958bdb8a8d7a5eee1b4956aefc487ff6fd", "a37f66cf8f52facf4f048d927778ea03f524ebdb512c0f4a8f3defff4c12dbbb", "be7b840ebd8e04c5823d7d05d9b069a0010feb46622ae0c89d8a988800a1fa49", "cb81dd4ffb7a407b65d62e3c0082e839197e2f605395e2fd90d1be1f19abe7d0", "d679ea9c2c31b16acde4fa7dfe7b9c5664fd8bd909ece72fb31d740c153e4100", "d70b2a26cae58ee1179dcbe1fc39c4d3a0b672fc1a11a7f6c64806653b333212", "e33ac3a95aac3a338f2f6b17ea9e2540bb21b74394ca50fd51136498077cdaf8", "f08333ad3186198aaf527e6e565a83cf641a3ebc28a10094e31f52a14ce94391"]
