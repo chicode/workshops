@@ -381,6 +381,7 @@ lessons:
     - |
       You may have noticed that the order of the draw instructions matters (if you haven't, try changing it around!). Talk to your partner about why this could be happening.
 
+  -
     name: Flowers
     description: |
       You've drawn a flower and added it to your world. Now, let's let the player collect them!
@@ -415,8 +416,6 @@ lessons:
       With your partner, discuss how to use `print` to display the total flowers collected.
       Do you notice anything wacky happening with the counter?
 
-
-
   -
     name: Flower Counters, Fixed
     description: |
@@ -437,6 +436,7 @@ lessons:
     name: Flower Counters, Leveled Up
     description: |
       Let's reward the player for collecting every flower by displaying a little "Congratulations!" message.
+
     directions:
     - |
       Count how many flowers are in your game. Create a new variable, called `total_flowers`, that stores this number.
@@ -470,10 +470,7 @@ lessons:
       Why did we use quotes around the w?
 
     - |
-      Let's make our flower counter a little prettier. While we know what the little number in the top left corner of our screen means, a random person playing your game might not! So, let's change the flower counter from just being a number to saying "You have _ flowers!"
-
-      To do this, we'll need to combine strings. To combine strings, we just use the + operator. So, "You" + " have" would be "You have".
-
+      Let's make our flower counter a little prettier. While we know what the little number in the top left corner of our screen means, a random person playing your game might not! So, let's change the flower counter from just being a number to saying "You have _ flowers!" To do this, we'll need to combine strings. To combine strings, we just use the + operator. So, "You" + " have" would be "You have".
       Try combining 'You have', flowers_collected, and 'flowers!' into one big string and printing it!
       Does Nico have any errors?
 
@@ -490,7 +487,7 @@ lessons:
 
       To solve this, use the `str` instruction to convert `flowers_collected` into a string. For example, `str(flowers_collected)` would create a string whose content is the number inside `flowers_collected`--so if `flowers_collected` contained the number `17`, then `str(flowers_collected)` would be the string `'17'`.
 
-      6
+    - |
       You might notice that the spacing around the number is a bit awkward. This is because we have no spaces! `'Hello' + 'Dog'` is `'HelloDog'`, not `'Hello Dog'`. To fix this, add some spaces to the two strings around `flowers_collected`. Where should the spaces go?
 
   -
