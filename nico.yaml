@@ -90,7 +90,7 @@ lessons:
     description: |
       Huh. That didn't work - Nico just drew three overlapping sprites that are all stuck there!
 
-      To make sense of this, you need to understand how Nico actually works. 60 times every second, Nico does two things: It changes the state of the game (for example, by moving something), clears the screen, and draws the new positions — this is called the **game loop**.
+      To make sense of this, you need to understand how Nico actually works. 60 times every second, Nico does three things: It changes the state of the game (for example, by moving something), clears the screen, and draws the new positions — this is called the **game loop**.
 
       If you want to create motion, you need to change the position of a sprite between frames — not just draw the sprite three times each frame!
 
@@ -149,7 +149,7 @@ lessons:
 
     directions:
     - |
-      You've seen how to set a variable's value, but how do you change it? Talk to the person next to you about how you could add `1` to a variable (Hint: use `+`).
+      You've seen how to set a variable's value, but how do you change it? Talk to the person next to you about how you could add `1` to a variable (Don't actually write this yet!).
 
   -
     name: "Updating Variables 2: The Sequel"
@@ -165,11 +165,7 @@ lessons:
 
     directions:
     - |
-      Now try increasing the value of `x` by 1 inside of the `update` section. Just like adding instructions to the draw section, you need to **indent your code** so Nico knows it's inside the `update` section.
-
-    - |
-      You've just encountered your first error! Don't panic and **try to figure out what it means**. Remember that errors shouldn't be scary, and are really just a way for your friendly computer to tell you what went wrong.
-
+      Now try increasing the value of `x` by 1 inside of the `update` section. Just like adding instructions to the draw section, you need to **indent your code** so Nico knows it's inside the `update` section.  - | You've just encountered your first error! Don't panic and **try to figure out what it means**. Remember that errors shouldn't be scary, and are really just a way for your friendly computer to tell you what went wrong.
   -
     name: Variable Scope
     description: |
@@ -186,7 +182,7 @@ lessons:
 
       Nico sees `x = x + 1` and tries to figure out whether you're *creating* or *updating* a variable called `x`.   Nico looks inside the `update` section and doesn't find anything, since our first `x` was created outside the `update` section. So, Nico ignores it, and assumes that now you're creating a new variable.
 
-      And so when it goes to the right side, and reads `x+1`, it freaks out: It thinks `x` is a new variable that lives inside the `update` section and is in the process of being created, and so when it sees you reference `x` in `x+1`, that `x` doesn't exist yet!
+      And so when it goes to the right side, and reads `x + 1`, it freaks out: It thinks `x` is a new variable that lives inside the `update` section and is in the process of being created, and so when it sees you reference `x` in `x + 1`, that `x` doesn't exist yet!
 
     directions:
     - |
@@ -201,13 +197,13 @@ lessons:
       To help Nico understand what we're trying to do, we need to make sure that when it sees
       ```python
       def update():
-      x = x + 1
+        x = x + 1
       ```
       it looks for `x` outside of the `update` section. We can do that by **marking `x` as being `global`**.
       ```python
       def update():
         global x
-      x = x + 1
+        x = x + 1
       ```
       Notice how that reminder goes in the beginning of the section, before any variables are introduced.
 
@@ -376,7 +372,7 @@ lessons:
 
     directions:
     - |
-      The `tilemap` instruction is used to draw the world onto the screen. With your partner, figure out how to use this instruction to draw your game's world. Make sure you can still see the player!
+     The `tilemap` instruction is used to draw the world onto the screen. With your partner, figure out how to use this instruction to draw your game's world. Make sure you can still see the player!
 
     - |
       You may have noticed that the order of the draw instructions matters (if you haven't, try changing it around!). Talk to your partner about why this could be happening.
@@ -523,6 +519,86 @@ lessons:
 
       As we've been doing, you should first think about this issue from a high level, and then worry about the actual code.
 
+
+-
+  name: Tricky Flowers
+  description: |
+    Let's add a bit more WOOF to our flower game!
+  slides:
+  -
+    name: An Entire Garden!
+    description: |
+      For our next project we'll need at least 5 different parts of plants, so make sure to draw those if you don't have them already.
+
+      In our previous code, flag `0` meant "this is a flower." Now, let's change the meaning of flag `0` to mean "this is some vegetation"
+
+    directions:
+    - |
+      After creating your new vegetation, give each of them new types of vegetation flag `0`. This way, all your existing flower detection code will work.
+    - |
+      Give each type of vegetation its own flag: Flowers will be flag `1`, tomatoes will be flag `2`, apples will be flag `3`, ... whatever. Now, Nico will be able to tell them apart!
+
+      Note that you can have two flags on at the same time: So flowers will have both flags `0` and `1`, tomatoes both `0` and `2`, ...
+  -
+    name: A New Way to Play
+    description: |
+      Currently, you win by collecting every single piece of vegetation.
+
+      Let's shake this up: Now, to win you need to collection *one of each type* of vegetation.
+    directions:
+    - |
+      We'll need a way to keep track of which types of vegetation we've already collected. To do this, we'll use a **list.**
+      Below, you'll see a few examples of lists. What do you think the lists contain? How do lists `ayy` and `bee` differ?
+
+      ```python
+      ayy = [1, 2, 3]
+
+      bee = [3, 2, 1]
+
+      cee = [4.5, 2 + 2, -1]
+      ```
+    - |
+      Let's create a variable, called `vegetation_collected`, that will store the types of vegetation you've collected.
+
+      One problem: At the beginning of the game, the player has no vegetation, and so the list will be empty. How might you represent an empty list?
+
+  -
+    name: Using our List
+    description: |
+      Whenever a player collects a plant, we should check if this is a new type of plant. If it is a new type of plant, we should add it to the list of types of plants they've collected.
+
+      So, we need a way to 1. figure out if something is in a list and 2. add something to a list.
+
+    directions:
+    - |
+      To check if something is in a list, we can use the instruction `in`. What do you think the example below does?
+      ```python
+      cool_numbers = [6, 17, 289]
+
+      if your_number in cool_numbers:
+       print('I like your number!')
+      ```
+    - |
+      To add something to a list, we use the instruction `append`. What will the value of `good_dogs` be after we run the code below?
+      ```python
+      good_dogs = ['Jack', 'Chrissy']
+      good_dogs.append('Princess')
+      ```
+    - |
+      Using `in` and `append`, update your plant code to keep track of which types of vegetation you've collected.
+
+  -
+    name: Winning!
+    description: |
+      To win the game, a player needs to collect one of each type of vegetation. Let's implement this!
+    directions:
+    - |
+      The instruction `len` can be used to check the length of a string, like below. Can you use `len` to figure out when the player wins?
+      ```python
+      good_dogs = ['Jack', 'Chrissy', 'Princess']
+      this_is_three = len(good_dogs)
+      ```
+
 -
   name: Reign of the Chicken
   description: |
@@ -551,11 +627,26 @@ lessons:
   -
     name: Non-Robotic Chickens
     description: |
-      Right now our chicken's movement is very predictable - let's change that by adding some randomness! Thankfully, someone out there has figured out how to generate randomness, so you don't have to implement that yourself. They placed that code in what's called a _package_, which is just a collection of instructions that aren't included by default.
+      Right now our chicken's movement is very predictable - let's change that by adding some randomness! In order to do that, we need to use some extra code. This code is in what's called a _package_, which is just a collection of instructions that aren't included by default.
 
       ```python
       import random
       ```
 
-      This instruction (usually placed at the top of a program) tells Nico to `import`, or use, this package.
+      This instruction (usually placed at the top of a program) tells Nico to `import` this package into your program (aka, bringing the code in).
+    directions:
+    - |
+      Add the `import random` statement to the top of your program.
+    - |
+      To generate a random number between `0` and `5`, we use the instruction `random.randint(0, 5)`. This will output either `0`, `1`, `2`, `3`, `4`, or `5` at random.
 
+      How can you use `random.randint(a, b)` to create random chicken movement? Try it out until your chickens move all smooth.
+
+  -
+    name: Wow!
+    description: |
+      Congratulations! You just solved a pretty complicated problem completely on your own - you're on your way to becoming a coding wizard!
+
+    directions:
+    - |
+      Tweak your code to make sure it's as perfect as it can be.
