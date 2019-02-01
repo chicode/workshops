@@ -524,7 +524,7 @@ lessons:
 
 
 -
-	project: old
+  project: old
   name: Tricky Flowers
   description: |
     Let's add a bit more WOOF to our flower game!
@@ -604,7 +604,7 @@ lessons:
       ```
 
 -
-	project: new
+  project: new
   name: Reign of the Chicken
   description: |
     Our player is lonely... let's give 'em a pet chicken!
