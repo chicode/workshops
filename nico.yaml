@@ -3,6 +3,7 @@ description: |
   Learn to make cool games in Nico-8!
 lessons:
 -
+  project: new
   name: Putting a Sprite on the Screen
   description: In this lesson you'll learn how to use Nico and create your first sprite
   slides:
@@ -226,6 +227,7 @@ lessons:
       Congratulations, you've finished this lesson! Feel free to go back to re-read some parts and move on to the second lesson when you're ready.
 
 -
+  project: new
   name: Player Input
   description: How can we give the player control?
   slides:
@@ -346,6 +348,7 @@ lessons:
       Prevent the player from moving off at the top or bottom of the screen. Now, they can't escape, mwahaha!
 
 -
+  project: old
   name: The Map
   description: The empty white background is boring... let's build a world to explore!
   slides:
@@ -407,9 +410,9 @@ lessons:
 
     - |
       We have `flowers_collected`, but the player has no way of seeing it's value!
-      To do this, let's use the `print` instruction. The `print` instruction just writes something onto the screen for us. The instruction `print(17)` will print the number `17`, for example.
+      To do this, let's use the `text` instruction. The `text` instruction just writes something onto the screen for us. The instruction `text(17, 0, 0)` will print the number `17` at the coordinates `(0, 0)`, for example.
 
-      With your partner, discuss how to use `print` to display the total flowers collected.
+      With your partner, discuss how to use `text` to display the total flowers collected.
       Do you notice anything wacky happening with the counter?
 
   -
@@ -446,15 +449,15 @@ lessons:
     - |
       Once a player has collected all the flowers, talk with with your partner about how to show a special "Congratulations!" message.
 
-      To display a message like "Congratulations!", we need to use **strings**. A **string** is just some text, and you can create one by surround your text in little quotes--so, you'd use `print('Congratulations!')`.
+      To display a message like "Congratulations!", we need to use **strings**. A **string** is just some text, and you can create one by surround your text in little quotes--so, you'd use `text('Congratulations!', 0, 0)`.
 
       Another tip: With `if` statements, you can use `else`. An `else` part of an `if` statement contains code that runs whenever the `if` statement *doesn't* run.
       As an example, in the `if` statement
       ```python
       if dogs > 34:
-        print('Woof!')
+        text('Woof!', 0, 0)
       else:
-        print('Not enough dogs!')
+        text('Not enough dogs!', 0, 0)
       ```
       If we have more than 34 dogs, then Nico will print Woof! Otherwise, Nico will tell us "Not enough dogs!"
 
@@ -473,7 +476,7 @@ lessons:
     - |
       If you try using
       ```python
-      print('You have' + flowers_collected + 'flowers!')
+      text('You have' + flowers_collected + 'flowers!', 0, 0)
       ```
       you may notice a problem--Nico gives an error! Let's look at that error.
       ```python
@@ -521,6 +524,7 @@ lessons:
 
 
 -
+	project: old
   name: Tricky Flowers
   description: |
     Let's add a bit more WOOF to our flower game!
@@ -576,7 +580,7 @@ lessons:
       cool_numbers = [6, 17, 289]
 
       if your_number in cool_numbers:
-       print('I like your number!')
+        text('I like your number!', 0, 0)
       ```
     - |
       To add something to a list, we use the instruction `append`. What will the value of `good_dogs` be after we run the code below?
@@ -600,6 +604,7 @@ lessons:
       ```
 
 -
+	project: new
   name: Reign of the Chicken
   description: |
     Our player is lonely... let's give 'em a pet chicken!
